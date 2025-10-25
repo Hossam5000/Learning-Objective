@@ -1,30 +1,41 @@
 // vars & cons
-const storedData = [];
+const storedData = JSON.parse(localStorage.getItem("data")) || [];
 saveBtn = document.querySelector(".btn-save");
 ingredName = document.querySelector(".ingred-name");
 ingredValue = document.querySelector(".ingred-value");
 
 // functions
 function save() {
-    const name = ingredName.value;
-    const value = ingredValue.value;
+    const name = ingredName.value.trim();
+    const value = ingredValue.value.trim();
     const ingred = {
         "ingred": name,
         "value": value,
     };
-    const storedData = JSON.parse(localStorage.getItem("data")) || [];
 
-    // add new ingreds
-    storedData.push(ingred);
-    localStorage.setItem("data", JSON.stringify(storedData));
+    if (name && value) {
+        // add new ingreds
+        storedData.push(ingred);
+        localStorage.setItem("data", JSON.stringify(storedData));
 
-    ingredName.value = "";
-    ingredValue.value = "";
+        // clear inputs
+        ingredName.value = "";
+        ingredValue.value = "";
+    }
+    else {
+        console.log("please enter any value")
+    }
+}
+
+function load() {
+
 }
 
 // events
 saveBtn.addEventListener("click", save);
+window.addEventListener("load", () => {
 
+});
 
 // test
-console.log(ingredValue)
+console.log(storedData)
