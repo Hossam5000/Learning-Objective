@@ -27,9 +27,6 @@ function save() {
     }
 }
 
-function load() {
-
-}
 
 // events
 saveBtn.addEventListener("click", save);
