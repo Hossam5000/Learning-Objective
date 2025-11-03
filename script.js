@@ -2,13 +2,14 @@
 const saveBtn = document.querySelector(".btn-save");
 const ingredName = document.querySelector(".ingred-name");
 const ingredValue = document.querySelector(".ingred-value");
+const ingredList = document.querySelector(".ingred-list");
 let dataBase = [];
 
 // functions
 function save() {
     // vars & cons
     const name = ingredName.value.trim();
-    const value = ingredValue.value.trim();
+    const value = parseFloat(ingredValue.value.trim());
     const ingredObj = {
         "name": name,
         "value": value,
@@ -20,7 +21,7 @@ function save() {
         return;
     }
 
-    if (!value.length || isNaN(value)) {
+    if ((value.length == 0) || isNaN(value)) {
         alert("Please, enter a valid value!");
         return;
     }
@@ -37,9 +38,6 @@ function save() {
     // clear input fields
     ingredName.value = "";
     ingredValue.value = "";
-
-    // test
-    console.log(value.length)
 }
 
 function load() {
@@ -48,13 +46,30 @@ function load() {
 
     // test the logic
     dataBase.forEach(ele => {
-        const storedName = ele.name;
-        const storedValue = ele.value;
 
-        console.log(storedName, storedValue);
+        // creating <li>(s)
+        const li = document.createElement("li");
+        //--ingredient name ele 
+        const loadedIngredName = document.createElement("span");
+        loadedIngredName.innerHTML = ele.name;
+        loadedIngredName.classList.add("storedName");
+
+        li.append(loadedIngredName);
+
+        //--creating ingredient value ele
+        const loadedIngredValue = document.createElement("span");
+        loadedIngredValue.innerHTML = ele.value;
+        loadedIngredValue.classList.add("storedValue");
+
+        li.append(loadedIngredValue);
+        ingredList.append(li);
+
+        // test
+        console.log(li);
     });
 }
 // events
 saveBtn.addEventListener("click", save);
+window.addEventListener("load", load);
 
 
