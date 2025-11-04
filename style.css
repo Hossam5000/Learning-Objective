@@ -11,12 +11,13 @@ html {
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-
+    padding: 30px;
     height: 100vh;
     font-size: 1.6rem;
+}
+
+ul {
+    list-style: none;
 }
 
 /* classes */
@@ -24,7 +25,11 @@ body {
 /* sections */
 
 .ingred-form {
+    width: 400px;
+    height: auto;
+
     padding: 10px;
+    margin: auto;
     border: 1px solid #000;
 }
 
@@ -52,4 +57,16 @@ body {
 
 .ingred-form .btn-save:hover {
     opacity: 0.7;
+}
+
+.ingred-list-container {
+    margin-top: 200px;
+}
+
+.stored-ingred {
+    margin-bottom: 10px;
+}
+
+.ingred-list .stored-value {
+    margin-left: 20px;
 }

@@ -4,7 +4,6 @@ const ingredName = document.querySelector(".ingred-name");
 const ingredValue = document.querySelector(".ingred-value");
 const ingredList = document.querySelector(".ingred-list");
 let dataBase = [];
-let test = "";
 
 // functions
 function save() {
@@ -22,7 +21,7 @@ function save() {
         return;
     }
 
-    if ((value.length == 0) || isNaN(value)) {
+    if (isNaN(value)) {
         alert("Please, enter a valid value!");
         return;
     }
@@ -38,35 +37,39 @@ function save() {
 
     // clear input fields
     ingredName.value = "";
-    ingredValue.value = "";
+    ingredValue.value = 0;
+
+    // load the last saved items
+    load();
 }
 
 function load() {
     // vars & cons
     dataBase = JSON.parse(localStorage.getItem("data")) || [];
+    ingredList.innerHTML = "";
 
-    // test the logic
+    // creating <li>(s) for each data entry
     dataBase.forEach(ele => {
 
         // creating <li>(s)
         const li = document.createElement("li");
+        li.classList.add("stored-ingred")
+
         //--ingredient name ele 
         const loadedIngredName = document.createElement("span");
         loadedIngredName.innerHTML = ele.name;
-        loadedIngredName.classList.add("storedName");
+        loadedIngredName.classList.add("stored-name");
 
         li.append(loadedIngredName);
 
-        //--creating ingredient value ele
+        //--ingredient value ele
         const loadedIngredValue = document.createElement("span");
         loadedIngredValue.innerHTML = ele.value;
-        loadedIngredValue.classList.add("storedValue");
+        loadedIngredValue.classList.add("stored-value");
 
         li.append(loadedIngredValue);
-        ingredList.append(li);
 
-        // test
-        console.log(li);
+        ingredList.append(li);
     });
 }
 // events
