@@ -69,6 +69,20 @@ function load() {
 
         li.append(loadedIngredValue);
 
+        //--ingredient edit button
+        const editBtn = document.createElement("button");
+        editBtn.type = "button";
+        editBtn.classList.add("ingred-edit");
+        //--creating the icon
+        const editIcon = document.createElement("i");
+        editIcon.classList.add("fa-solid", "fa-pen-to-square");
+        editBtn.append(editIcon);
+
+
+
+        li.append(editBtn);
+
+
         ingredList.append(li);
     });
 }
