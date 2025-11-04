@@ -4,6 +4,7 @@ const ingredName = document.querySelector(".ingred-name");
 const ingredValue = document.querySelector(".ingred-value");
 const ingredList = document.querySelector(".ingred-list");
 let dataBase = [];
+let test = "";
 
 // functions
 function save() {
