@@ -80,7 +80,7 @@ function load() {
 
         //--ingredient value ele --attributes
         loadedIngredValue.type = "number";
-        ingredValue.disabled = true;
+        loadedIngredValue.disabled = true;
 
         //--ingredient value ele --styles
         loadedIngredValue.classList.add("stored-value");
@@ -108,11 +108,20 @@ function load() {
 
         // functions
         function editLi(e) {
+            // enable name input field
             const li = e.target.closest("li");
             const nameInput = li.querySelector(".stored-name");
 
             nameInput.disabled = false;
             nameInput.focus();
+
+            // enable value input field
+            const valueInput = li.querySelector(".stored-value");
+
+            valueInput.disabled = false;
+
+            // blur from the li
+
         };
 
         function blurFuntion(e) {
@@ -122,6 +131,8 @@ function load() {
         // adding events
         editBtn.addEventListener("click", editLi);
         loadedIngredName.addEventListener("blur", blurFuntion);
+        loadedIngredValue.addEventListener("blur", blurFuntion);
+        li.addEventListener("blur", blurFuntion);
 
 
         ingredList.append(li);
