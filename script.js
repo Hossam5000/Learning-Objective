@@ -6,6 +6,8 @@ const ingredList = document.querySelector(".ingred-list");
 let dataBase = [];
 
 // vars & cons -- test
+// level 1
+
 let activeLi = null;
 
 // functions
