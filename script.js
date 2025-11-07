@@ -5,6 +5,9 @@ const ingredValue = document.querySelector(".ingred-value");
 const ingredList = document.querySelector(".ingred-list");
 let dataBase = [];
 
+// vars & cons -- test
+let activeLi = null;
+
 // functions
 function save() {
     // vars & cons
