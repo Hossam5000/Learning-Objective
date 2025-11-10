@@ -125,7 +125,8 @@ function load() {
 
             valueInput.disabled = false;
 
-            // blur from the li
+            // update the gloabal activeLi
+            activeLi = li;
 
         };
 
@@ -146,5 +147,15 @@ function load() {
 // events
 saveBtn.addEventListener("click", save);
 window.addEventListener("load", load);
+document.addEventListener("click", function (e) {
+    if (activeLi && !activeLi.contains(e.target)) {
+        const nameInput = activeLi.querySelector(".stored-name");
+        const valueInput = activeLi.querySelector(".stored-value");
 
+        nameInput.disabled = true;
+        valueInput.disabled = true;
+
+        activeLi = null;
+    }
+});
 
