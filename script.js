@@ -6,5 +6,5 @@ const selected = document.querySelector(".selected");
 selected.style.backgroundColor = "green";
 selected.style.color = "white";
 
-
+// test
 console.log(selected.getElementByName);
